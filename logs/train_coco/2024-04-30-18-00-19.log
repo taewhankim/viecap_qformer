@@ -1,0 +1,30 @@
+/home/twkim/anaconda3/envs/viecap/lib/python3.9/site-packages/transformers/optimization.py:306: FutureWarning: This implementation of AdamW is deprecated and will be removed in a future version. Use the PyTorch implementation torch.optim.AdamW instead, or set `no_deprecation_warning=True` to disable this warning
+  warnings.warn(
+args: {'bs': 160, 'lr': 0.0001, 'device': 'cuda:2', 'epochs': 15, 'random_mask': True, 'prob_of_random_mask': 0.4, 'clip_project_length': 10, 'continuous_prompt_length': 10, 'max_num_of_entities': 10, 'prompt_template_length': 5, 'num_layers': 8, 'noise_variance': 0.016, 'clip_model': 'ViT-B/32', 'using_clip_features': True, 'is_rn': False, 'language_model': 'gpt2', 'using_hard_prompt': True, 'soft_prompt_first': True, 'only_hard_prompt': False, 'debug': False, 'few_shot_ratio': 1.0, 'save_every': 1, 'prefix': 'coco_prefix', 'path_of_datasets': '/data/twkim/viecap/ann/coco/coco_texts_features_ViT-B32.pickle', 'out_dir': '/data/twkim/viecap/checkpoints/train_coco', 'normalize_prefix': True, 'name_of_objects_vocabs': 'visual_genome_entities', 'path_of_objects_vocabs': '/data/twkim/viecap/ann/vocabulary/all_objects_attributes_relationships.pickle', 'frozen_gpt': False, 'num_workers': 0, 'use_amp': True, 'disable_random_seed': False, 'random_seed': 30}
+Dataset Loading: /data/twkim/viecap/ann/coco/coco_texts_features_ViT-B32.pickle successful. Max sentence length: 39
+>>> Training epoch 0
+coco_prefix:   0%|          | 0/3542 [00:00<?, ?it/s]Traceback (most recent call last):
+  File "/home/twkim/project/viecap/main.py", line 170, in <module>
+    main()
+  File "/home/twkim/project/viecap/main.py", line 167, in main
+    train(args, datasets, model, output_dir = args.out_dir, output_prefix = args.prefix)
+  File "/home/twkim/project/viecap/main.py", line 81, in train
+    outputs = model(continuous_prefix, captions_gpt_tokens, hard_prompts_length, masks, ret_feat)
+  File "/home/twkim/anaconda3/envs/viecap/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/twkim/project/viecap/ClipCap.py", line 245, in forward
+    continuous_embeddings = self.mapping_network(continuous_prompt, ret_feat).view(-1, self.continuous_length, self.gpt_hidden_size) # (b, continuous_length, gpt_hidden_size)
+  File "/home/twkim/anaconda3/envs/viecap/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/twkim/project/viecap/ClipCap.py", line 171, in forward
+    x = self.purecap(ret_feat, x)
+  File "/home/twkim/anaconda3/envs/viecap/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/twkim/project/viecap/decoder/patch_mapping_network.py", line 40, in forward
+    x  = noise_injection(x, variance=self.noise_variance)
+  File "/home/twkim/project/viecap/decoder/deconv_utils.py", line 67, in noise_injection
+    x = torch.nn.functional.normalize(x, dim = -1)
+  File "/home/twkim/anaconda3/envs/viecap/lib/python3.9/site-packages/torch/nn/functional.py", line 4632, in normalize
+    denom = input.norm(p, dim, keepdim=True).clamp_min(eps).expand_as(input)
+RuntimeError: "clamp_min_cpu" not implemented for 'Half'
+coco_prefix:   0%|          | 0/3542 [00:02<?, ?it/s]

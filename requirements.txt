@@ -1,0 +1,9 @@
+tqdm
+git+https://github.com/openai/CLIP.git
+huggingface-hub==0.16.2
+transformers==4.19.2
+pandas==2.0.0
+nltk==3.8.1
+matplotlib==3.7.1
+numpy==1.24.1
+pycocotools==2.0.6

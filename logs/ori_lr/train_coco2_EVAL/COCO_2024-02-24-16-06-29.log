@@ -1,0 +1,6 @@
+  File "/home/twkim/project/viecap/validation.py", line 180
+    out_json_path = os.path.join(args.out_path, f'{args.name_of_datasets}_generated_captions_{}.json')
+                                                                                                     ^
+SyntaxError: f-string: empty expression not allowed
+PTBTokenizer tokenized 307085 tokens at 1379637.01 tokens per second.
+PTBTokenizer tokenized 60055 tokens at 448182.91 tokens per second.

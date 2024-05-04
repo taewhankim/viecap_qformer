@@ -1,0 +1,17 @@
+args: {'device': 'cuda:0', 'clip_model': 'ViT-B/32', 'language_model': 'gpt2', 'continuous_prompt_length': 10, 'clip_project_length': 10, 'temperature': 0.01, 'top_k': 3, 'threshold': 0.4, 'using_image_features': True, 'name_of_datasets': 'coco', 'path_of_val_datasets': '/data/twkim/viecap/ann/coco/test_captions.json', 'disable_all_entities': False, 'name_of_entities_text': 'coco_entities', 'prompt_ensemble': True, 'weight_path': '/data/twkim/viecap/checkpoints/ori_lr/coco_prefix-0014.pt', 'image_folder': '/data/dataset/coco_2014/val2014/', 'out_path': '/data/twkim/viecap/checkpoints/ori_lr', 'using_hard_prompt': True, 'soft_prompt_first': True, 'only_hard_prompt': False, 'using_greedy_search': False, 'beam_width': 5, 'debug': False, 'text_prompt': None}
+
+Traceback (most recent call last):
+  File "/home/twkim/project/viecap/validation.py", line 277, in <module>
+    main(args)
+  File "/home/twkim/anaconda3/envs/viecap/lib/python3.9/site-packages/torch/autograd/grad_mode.py", line 27, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/twkim/project/viecap/validation.py", line 229, in main
+    model.load_state_dict(torch.load(args.weight_path, map_location = device))
+  File "/home/twkim/anaconda3/envs/viecap/lib/python3.9/site-packages/torch/serialization.py", line 771, in load
+    with _open_file_like(f, 'rb') as opened_file:
+  File "/home/twkim/anaconda3/envs/viecap/lib/python3.9/site-packages/torch/serialization.py", line 270, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "/home/twkim/anaconda3/envs/viecap/lib/python3.9/site-packages/torch/serialization.py", line 251, in __init__
+    super(_open_file, self).__init__(open(name, mode))
+FileNotFoundError: [Errno 2] No such file or directory: '/data/twkim/viecap/checkpoints/ori_lr/coco_prefix-0014.pt'
+python: can't open file '/home/twkim/project/viecap/evaluation/cocoeval.py': [Errno 2] No such file or directory

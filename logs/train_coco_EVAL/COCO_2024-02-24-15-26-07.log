@@ -1,0 +1,15 @@
+args: {'device': 'cuda:0', 'clip_model': 'ViT-B/32', 'language_model': 'gpt2', 'continuous_prompt_length': 10, 'clip_project_length': 10, 'temperature': 0.01, 'top_k': 3, 'threshold': 0.4, 'using_image_features': True, 'name_of_datasets': 'coco', 'path_of_val_datasets': '/data/twkim/viecap/ann/coco/test_captions.json', 'disable_all_entities': False, 'name_of_entities_text': 'coco_entities', 'prompt_ensemble': True, 'weight_path': '/data/twkim/viecap/checkpoints/train_coco/coco_prefix-0014.pt', 'image_folder': '/data/dataset/coco_2014/val2014/', 'out_path': '/data/twkim/viecap/checkpoints/train_coco', 'using_hard_prompt': True, 'soft_prompt_first': True, 'only_hard_prompt': False, 'using_greedy_search': False, 'beam_width': 5, 'debug': False, 'text_prompt': None}
+
+Traceback (most recent call last):
+  File "/home/twkim/project/viecap/validation.py", line 274, in <module>
+    main(args)
+  File "/home/twkim/anaconda3/envs/viecap/lib/python3.9/site-packages/torch/autograd/grad_mode.py", line 27, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/twkim/project/viecap/validation.py", line 196, in main
+    entities_text = load_entities_text(args.name_of_entities_text, './annotations/vocabulary/coco_categories.json', not args.disable_all_entities)
+  File "/home/twkim/project/viecap/load_annotations.py", line 166, in load_entities_text
+    return load_coco_entities(path_of_entities, all_entities)
+  File "/home/twkim/project/viecap/load_annotations.py", line 94, in load_coco_entities
+    with open(path, 'r') as infile:
+FileNotFoundError: [Errno 2] No such file or directory: './annotations/vocabulary/coco_categories.json'
+python: can't open file '/home/twkim/project/viecap/evaluation/cocoeval.py': [Errno 2] No such file or directory

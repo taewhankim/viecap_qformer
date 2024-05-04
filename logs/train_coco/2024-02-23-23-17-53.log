@@ -1,0 +1,13 @@
+args: {'bs': 80, 'lr': 2e-05, 'device': 'cuda:0', 'epochs': 15, 'random_mask': True, 'prob_of_random_mask': 0.4, 'clip_project_length': 10, 'continuous_prompt_length': 10, 'max_num_of_entities': 10, 'prompt_template_length': 5, 'num_layers': 8, 'noise_variance': 0.016, 'clip_model': 'ViT-B/32', 'using_clip_features': True, 'is_rn': False, 'language_model': 'gpt2', 'using_hard_prompt': True, 'soft_prompt_first': True, 'only_hard_prompt': False, 'debug': False, 'few_shot_ratio': 1.0, 'save_every': 1, 'prefix': 'coco_prefix', 'path_of_datasets': '/data/twkim/viecap/ann/coco/coco_texts_features_ViT-B32.pickle', 'out_dir': 'checkpoints/train_coco', 'normalize_prefix': True, 'name_of_objects_vocabs': 'visual_genome_entities', 'path_of_objects_vocabs': './annotations/vocabulary/all_objects_attributes_relationships.pickle', 'frozen_gpt': False, 'num_workers': 0, 'use_amp': True, 'disable_random_seed': False, 'random_seed': 30}
+Traceback (most recent call last):
+  File "/home/twkim/project/viecap/main.py", line 168, in <module>
+    
+  File "/home/twkim/project/viecap/main.py", line 152, in main
+    clip_hidden_size = 640 if args.is_rn else 512
+  File "/home/twkim/project/viecap/CaptionsDataset.py", line 82, in __init__
+    self.objects_vocabs = load_entities_text(args.name_of_objects_vocabs, args.path_of_objects_vocabs, all_entities = False)
+  File "/home/twkim/project/viecap/load_annotations.py", line 163, in load_entities_text
+    return load_visual_genome_entities(path_of_entities, all_entities)
+  File "/home/twkim/project/viecap/load_annotations.py", line 78, in load_visual_genome_entities
+    with open(path, 'rb') as infile:
+FileNotFoundError: [Errno 2] No such file or directory: './annotations/vocabulary/all_objects_attributes_relationships.pickle'
